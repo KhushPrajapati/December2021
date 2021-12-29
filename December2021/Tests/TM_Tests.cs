@@ -8,51 +8,42 @@ using System;
 
 namespace December2021 // Note: actual namespace depends on the project name.
 {
-    [TestFixture]
     class TM_Tests : CommonDriver
     {
-        [SetUp]
-        public void LoginFunction()
+        [Test, Order(1), Description("Cehck if user is able to create a Material record with valid data")]
+        public void CreateTM_Test()
         {
-            driver = new ChromeDriver();
-
-            // Login page object initialization and definition
-            LoginPage loginPageObj = new LoginPage();
-            LoginPage.LoginSteps(driver);
-
             // Home page object initialization and definition
             HomePage homePageObj = new HomePage();
             homePageObj.GoToTMPage(driver);
-        }
 
-        [Test]
-        public void CreateTM_Test()
-        {
             // TMPage object initialization and definition
             TMPage tmPageObj = new TMPage();
             tmPageObj.CreateTM(driver);
         }
 
-        [Test]
+        [Test, Order(2), Description("Check if user is able to edit a Material record with valid data")]
         public void EditTM_Test()
         {
+            // Home page object initialization and definition
+            HomePage homePageObj = new HomePage();
+            homePageObj.GoToTMPage(driver);
+
             // TMPage object initialization and definition
             TMPage tmPageObj = new TMPage();
-            TMPage.EditTM(driver);
+            tmPageObj.EditTM(driver);
         }
 
-        [Test]
+        [Test, Order(3), Description("Check if user is able to delete an existing Material record")]
         public void DeleteTM_Test()
         {
+            // Home page object initialization and definition
+            HomePage homePageObj = new HomePage();
+            homePageObj.GoToTMPage(driver);
+
             // TMPage object initialization and definition
             TMPage tmPageObj = new TMPage();
-            TMPage.DeleteTM(driver);
-        }
-
-        [TearDown]
-        public void CloseTestRun()
-        {
-
+            tmPageObj.DeleteTM(driver);
         }
     }
 }
