@@ -22,3 +22,9 @@ Scenario Outline: [Edit time and material record with valid details]
 	| Time        |
 	| Material    |
 	|EditedRecord|
+
+Scenario: [Delete time and material record]
+	Given [I logged into TurnUp Portal successfully]
+	And [I navigate to Time and Material page]
+	When [I delete existing Time and Material record]
+	Then [The record should have deleted]

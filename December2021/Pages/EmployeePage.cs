@@ -65,35 +65,25 @@ namespace December2021.Pages
             IWebElement lastPageButton = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[4]/a[4]"));
             lastPageButton.Click();
             Thread.Sleep(3000);
-
-            // Identify the record has been created or not
-            // Assertion
-            IWebElement actualName = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            IWebElement actualUsername = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
-
-            Assert.That(actualName.Text == "TEmployee2021", "Actual name and expected name do not match");
-            Assert.That(actualUsername.Text == "TEmp2021", "Actual Username and expected Username do not match");
         }
-        public void EditEmployee_Test(IWebDriver driver)
+
+        public string GetName(IWebDriver driver)
+        {
+            IWebElement actualName = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return actualName.Text;
+        }
+        public string GetUserName(IWebDriver driver)
+        {
+            IWebElement actualUsername = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
+            return actualUsername.Text;
+        }
+        public void EditEmployee_Test(IWebDriver driver, string UserName)
         {
             Thread.Sleep(3000);
 
             // Go to the last page button
             IWebElement goToLastPageButton = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[4]/a[4]"));
             goToLastPageButton.Click();
-
-            // Go to last created Record
-            IWebElement lastRecord = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            
-            if (lastRecord.Text == "TEmployee2021")
-            {
-                IWebElement editButton = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[3]/a[1]"));
-                editButton.Click();
-            }
-            else
-            {
-                Assert.Fail("Record to be edited hasn't been found. Record not edited");
-            }
 
             // Edit current Name
             IWebElement editName = driver.FindElement(By.Id("Name"));
@@ -103,7 +93,7 @@ namespace December2021.Pages
             // Edit current Username
             IWebElement editUserName = driver.FindElement(By.Id("Username"));
             editUserName.Clear();
-            editUserName.SendKeys("EditEmp2021");                 
+            editUserName.SendKeys(UserName);                 
 
             // Click on Save button
             IWebElement editSaveButton = driver.FindElement(By.Id("SaveButton"));
@@ -121,14 +111,19 @@ namespace December2021.Pages
             Thread.Sleep(3000);
 
             // Identify that the edited record successfully created or not
-            IWebElement editedLastValue = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            IWebElement editedLastValue = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));            
+        }
 
-            //Assertion
+        public string GetEditedName(IWebDriver driver)
+        {
             IWebElement createdName = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            IWebElement createdUsername = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
+            return createdName.Text;
+        }
 
-            Assert.That(createdName.Text == "EditedEmployee2021", "Created Name hasn't been edited");
-            Assert.That(createdUsername.Text == "EditEmp2021", "Created Username hasn't been edited");
+        public string GetEditedUserName(IWebDriver driver)
+        {
+            IWebElement createdUsername = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
+            return createdUsername.Text;
         }
         public void DeleteEmployee_Test(IWebDriver driver)
         {
@@ -162,12 +157,19 @@ namespace December2021.Pages
             Thread.Sleep(2000);
 
             // Assertion
+            //Assert.That(editedName.Text != "EditedEmployee2021", "Edited Name record hasn't been deleted.");
+            //Assert.That(editedUserName.Text != "EditEmp2021", "Edited UserName record hasn't been deleted.");
+
+        }
+        public string GetDeletedName(IWebDriver driver)
+        {
             IWebElement editedName = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return editedName.Text;
+        }
+        public string GetDeletedUserName(IWebDriver driver)
+        {
             IWebElement editedUserName = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
-
-            Assert.That(editedName.Text != "EditedEmployee2021", "Edited Name record hasn't been deleted.");
-            Assert.That(editedUserName.Text != "EditEmp2021", "Edited UserName record hasn't been deleted.");
-
+            return editedUserName.Text;
         }
     }
 }

@@ -138,24 +138,29 @@ namespace December2021.Pages
 
             // Check if edited record has edit the value
             IWebElement editedLastValue = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            
-            // Assertion
-            IWebElement createdCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            IWebElement createdTypeCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
-            IWebElement createdPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
-
-            // Assertion
-            Assert.That(createdCode.Text == "TEditedDecember2012", "Created Code hasn't been Edited.");
-            Assert.That(createdTypeCode.Text == "M", "Created Typecode hasn't been Edited.");
-            //Assert.That(createdDescription.Text == "TEditedDecember2012", "Created Description hasn't been Edited.");
-            Assert.That(createdPrice.Text == "$177.00", "Created Price hasn't been Edited.");
         }
 
+        public string GetEditedCode(IWebDriver driver)
+        {
+            IWebElement createdCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return createdCode.Text;
+        }
+        public string GetEditedTypeCode(IWebDriver driver)
+        {
+            IWebElement createdTypeCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
+            return createdTypeCode.Text;
+        }
         public string GetEditedDescription(IWebDriver driver)
         {
             IWebElement createdDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
             return createdDescription.Text;
         }
+        public string GetEditedPrice(IWebDriver driver)
+        {
+            IWebElement createdPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
+            return createdPrice.Text;
+        }
+
         public void DeleteTM(IWebDriver driver)
         {
             Thread.Sleep(3000);
@@ -184,17 +189,23 @@ namespace December2021.Pages
             // Assert that Time record has been deleted.
             IWebElement goToLastPageBtn1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
             goToLastPageBtn1.Click();
-            Thread.Sleep(2000);
-
-            IWebElement editedCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            IWebElement editedDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
-            IWebElement editedPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
-
-            // Assertion
-            Assert.That(editedCode.Text != "TEditedDecember2012", "Edited Code record hasn't been Deleted.");
-            Assert.That(editedDescription.Text != "TEditedDecember2012", "Edited Description record hasn't been Deleted.");
-            Assert.That(editedPrice.Text != "$177.00", "Edited Price record hasn't been Deleted.");
-
+            Thread.Sleep(2000);        
         }
+        public string GetDeletedCode(IWebDriver driver)
+        {
+            IWebElement editedCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return editedCode.Text;
+        }
+        public string GetDeletedDescription(IWebDriver driver)
+        {
+            IWebElement editedDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
+            return editedDescription.Text;
+        }
+        public string GetDeletedPrice(IWebDriver driver)
+        {
+            IWebElement editedPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
+            return editedPrice.Text;
+        }
+
     }
 }

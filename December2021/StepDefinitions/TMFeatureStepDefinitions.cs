@@ -62,10 +62,23 @@ namespace December2021.StepDefinitions
         [Then(@"\[The record should have an updated '([^']*)']")]
         public void ThenTheRecordShouldHaveAnUpdated(string p0)
         {
-
             string editedDescription = tmPageObj.GetEditedDescription(driver);
 
             Assert.That(editedDescription == p0, "Actual description and expected description do not match.");
+        }
+
+        [When(@"\[I delete existing Time and Material record]")]
+        public void WhenIDeleteExistingTimeAndMaterialRecord()
+        {
+            tmPageObj.DeleteTM(driver);
+        }
+
+        [Then(@"\[The record should have deleted]")]
+        public void ThenTheRecordShouldHaveDeleted()
+        {
+            string GetDeletedCode = tmPageObj.GetDeletedCode(driver);
+
+            Assert.That(GetDeletedCode != "TEditedDecember2012", "Actual record and expected record do not match.");
         }
 
     }

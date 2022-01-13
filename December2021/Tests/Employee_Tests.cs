@@ -32,7 +32,7 @@ namespace December2021
 
             // Employee Page object initialization and definition
             EmployeePage editEmployeePage = new EmployeePage();
-            editEmployeePage.EditEmployee_Test(driver);
+            editEmployeePage.EditEmployee_Test(driver, "dummy");
         }
 
         [Test, Order(3), Description("Check if user is able to delete an existing Employee record")]
