@@ -9,9 +9,9 @@ using OpenQA.Selenium.Chrome;
 
 namespace December2021.Pages
 {
-    class LoginPage
+    public class LoginPage
     {
-        public static void LoginSteps(IWebDriver driver)
+        public void LoginSteps(IWebDriver driver)
            {
             // Open chrome browser
             driver.Manage().Window.Maximize();

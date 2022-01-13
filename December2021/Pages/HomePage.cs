@@ -28,10 +28,21 @@ namespace December2021.Pages
 
             IWebElement administrationDropdown = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));
             administrationDropdown.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             IWebElement EmployeeOption = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[2]/a"));
             EmployeeOption.Click();
+        }
+
+        public void GoToCustomerPage(IWebDriver driver)
+        {
+            // Go to Customer Page
+            IWebElement administrationDropdown = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));
+            administrationDropdown.Click();
+            Thread.Sleep(3000);
+
+            IWebElement CustomerOption = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[1]/a"));
+            CustomerOption.Click();
         }
     }
 }

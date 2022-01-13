@@ -12,7 +12,7 @@ namespace December2021.Utilities
 {
     [TestFixture]
     [Parallelizable]
-    internal class CommonDriver
+    public class CommonDriver
     {
         public IWebDriver driver;
 
@@ -23,7 +23,7 @@ namespace December2021.Utilities
 
             // Login page object initialization and definition
             LoginPage loginPageObj = new LoginPage();
-            LoginPage.LoginSteps(driver);
+            loginPageObj.LoginSteps(driver);
         }
 
         [OneTimeTearDown]

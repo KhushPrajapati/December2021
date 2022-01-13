@@ -7,7 +7,7 @@ using December2021.Pages;
 using December2021.Utilities;
 using NUnit.Framework;
 
-namespace December2021.Tests
+namespace December2021
 {
     class Employee_Tests: CommonDriver
     {
