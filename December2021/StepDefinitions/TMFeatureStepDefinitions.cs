@@ -52,19 +52,20 @@ namespace December2021.StepDefinitions
 
         }
 
-        [When(@"\[I update '([^']*)' an existing Time and Material Record]")]
-        public void WhenIUpdateAnExistingTimeAndMaterialRecord(string p0)
+        [When(@"\[I update '([^']*)' and '([^']*)' an existing Time and Material Record]")]
+        public void WhenIUpdateAndAnExistingTimeAndMaterialRecord(string p0, string p1)
         {
-            //TMPage object initialization and definition
-            tmPageObj.EditTM(driver, p0);
+            tmPageObj.EditTM(driver, p0, p1);
         }
 
-        [Then(@"\[The record should have an updated '([^']*)']")]
-        public void ThenTheRecordShouldHaveAnUpdated(string p0)
+        [Then(@"\[The record should have an updated '([^']*)' and '([^']*)']")]
+        public void ThenTheRecordShouldHaveAnUpdatedAnd(string p0, string p1)
         {
             string editedDescription = tmPageObj.GetEditedDescription(driver);
+            string editedCode = tmPageObj.GetEditedCode(driver);
 
-            Assert.That(editedDescription == p0, "Actual description and expected description do not match.");
+            Assert.That(editedDescription == p0, "Actual editedDescription and expected editedDescription do not match.");
+            Assert.That(editedCode == p1, "Actual editedCode and expected editedCode do not match.");
         }
 
         [When(@"\[I delete existing Time and Material record]")]

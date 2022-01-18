@@ -93,7 +93,7 @@ namespace December2021.Pages
             return actualPrice.Text;
         }
 
-        public void EditTM(IWebDriver driver, string description)
+        public void EditTM(IWebDriver driver, string description, string code)
         {
             Thread.Sleep(3000);
 
@@ -108,7 +108,7 @@ namespace December2021.Pages
             // Edit Current Code 
             IWebElement editCode = driver.FindElement(By.Id("Code"));
             editCode.Clear();
-            editCode.SendKeys("TEditedDecember2012");
+            editCode.SendKeys(code);
 
             // Edit Current Description
             IWebElement editDescription = driver.FindElement(By.Id("Description"));

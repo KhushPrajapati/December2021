@@ -31,7 +31,7 @@ namespace December2021 // Note: actual namespace depends on the project name.
 
             // TMPage object initialization and definition
             TMPage tmPageObj = new TMPage();
-            tmPageObj.EditTM(driver, "dummy");
+            tmPageObj.EditTM(driver, "dummy", "dummy1");
         }
 
         [Test, Order(3), Description("Check if user is able to delete an existing Material record")]

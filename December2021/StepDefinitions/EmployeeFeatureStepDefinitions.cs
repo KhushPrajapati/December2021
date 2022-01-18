@@ -43,17 +43,17 @@ namespace December2021.StepDefinitions
         }
 
         [When(@"\[I update '([^']*)'an existing employee record]")]
-        public void WhenIUpdateAnExistingEmployeeRecord(string p0)
+        public void WhenIUpdateAnExistingEmployeeRecord(string UserName)
         {
-            employeePageObj.EditEmployee_Test(driver, p0);
+            employeePageObj.EditEmployee_Test(driver, UserName);
         }
 
         [Then(@"\[The Employee record should have an updated '([^']*)']")]
-        public void ThenTheEmployeeRecordShouldHaveAnUpdated(string p0)
+        public void ThenTheEmployeeRecordShouldHaveAnUpdated(string UserName)
         {
             string GetEditedUserName = employeePageObj.GetEditedUserName(driver);
 
-            Assert.That(GetEditedUserName == p0, "Actual username and expected username do not match.");
+            Assert.That(GetEditedUserName == UserName, "Actual editedUsername and expected editedUsername do not match.");
         }
 
         [When(@"\[I delete an existing employee record]")]

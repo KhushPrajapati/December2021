@@ -14,14 +14,14 @@ Scenario: [Create time and material record with valid details]
 Scenario Outline: [Edit time and material record with valid details]
 	Given [I logged into TurnUp Portal successfully]
 	And [I navigate to Time and Material page]
-	When [I update '<Description>' an existing Time and Material Record]
-	Then [The record should have an updated '<Description>']
+	When [I update '<Description>' and '<Code>' an existing Time and Material Record]
+	Then [The record should have an updated '<Description>' and '<Code>']
 
 	Examples: 
-	| Description |
-	| Time        |
-	| Material    |
-	|EditedRecord|
+	| Description | Code         |
+	| Time        | Code         |
+	| Material    | Edited Code  |
+	
 
 Scenario: [Delete time and material record]
 	Given [I logged into TurnUp Portal successfully]
