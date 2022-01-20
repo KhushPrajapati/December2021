@@ -5,13 +5,13 @@
 	So that I can manage my employees' time and materials successfully.
 
 @tag1
-Scenario: [Create time and material record with valid details]
+Scenario: 1 [Create time and material record with valid details]
 	Given [I logged into TurnUp Portal successfully]
 	And [I navigate to Time and Material page]
 	When [I create Time and Material Record]
 	Then [The record should be created Successfully]
 
-Scenario Outline: [Edit time and material record with valid details]
+Scenario Outline: 2 [Edit time and material record with valid details]
 	Given [I logged into TurnUp Portal successfully]
 	And [I navigate to Time and Material page]
 	When [I update '<Description>' and '<Code>' an existing Time and Material Record]
@@ -23,7 +23,7 @@ Scenario Outline: [Edit time and material record with valid details]
 	| Material    | Edited Code  |
 	
 
-Scenario: [Delete time and material record]
+Scenario: 3 [Delete time and material record]
 	Given [I logged into TurnUp Portal successfully]
 	And [I navigate to Time and Material page]
 	When [I delete existing Time and Material record]

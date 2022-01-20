@@ -7,6 +7,7 @@ using December2021.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+#nullable disable
 
 namespace December2021.Utilities
 {
