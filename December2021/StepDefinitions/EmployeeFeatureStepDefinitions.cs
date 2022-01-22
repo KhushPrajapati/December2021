@@ -2,6 +2,7 @@ using System;
 using December2021.Pages;
 using December2021.Utilities;
 using NUnit.Framework;
+using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
 
 namespace December2021.StepDefinitions
@@ -16,12 +17,16 @@ namespace December2021.StepDefinitions
         [Given(@"\[I logged in to TurnUp Portal successfully]")]
         public void GivenILoggedInToTurnUpPortalSuccessfully()
         {
+            driver = new ChromeDriver();
+
+            // Login page object initialization and definition
             loginPageObj.LoginSteps(driver);
         }
 
         [Given(@"\[I navigate to Employee page]")]
         public void GivenINavigateToEmployeePage()
         {
+            // Home page object initialization and definition
             homePageObj.GoToEmployeePage(driver);
         }
 
@@ -42,19 +47,21 @@ namespace December2021.StepDefinitions
             Assert.That(GetUserName == "TEmp2021", "Actual Username and expected username do not match.");
         }
 
-        [When(@"\[I update '([^']*)'an existing employee record]")]
-        public void WhenIUpdateAnExistingEmployeeRecord(string UserName)
+        [When(@"\[I update '([^']*)' and '([^']*)' an existing employee record]")]
+        public void WhenIUpdateAndAnExistingEmployeeRecord(string p0, string p1)
         {
-            employeePageObj.EditEmployee_Test(driver, UserName);
+            employeePageObj.EditEmployee_Test(driver, p0, p1);
         }
 
-        [Then(@"\[The Employee record should have an updated '([^']*)']")]
-        public void ThenTheEmployeeRecordShouldHaveAnUpdated(string UserName)
+        [Then(@"\[The Employee record should have an updated '([^']*)' and '([^']*)']")]
+        public void ThenTheEmployeeRecordShouldHaveAnUpdatedAnd(string p0, string p1)
         {
-            string GetEditedUserName = employeePageObj.GetEditedUserName(driver);
+            string editedName = employeePageObj.GetEditedName(driver);
+            string editedUserName = employeePageObj.GetEditedUserName(driver);
 
-            Assert.That(GetEditedUserName == UserName, "Actual editedUsername and expected editedUsername do not match.");
-        }
+            Assert.That(editedName == p0, "Actual editedName and Expected editedName do not match.");
+            Assert.That(editedUserName == p1, "Actual editedUsername and expected editedUsername do not match.");
+        }   
 
         [When(@"\[I delete an existing employee record]")]
         public void WhenIDeleteAnExistingEmployeeRecord()
@@ -69,6 +76,5 @@ namespace December2021.StepDefinitions
 
             Assert.That(GetDeletedName != "EditedEmployee2021", "Actual Name and Expected Name do not match.");
         }
-
     }
 }

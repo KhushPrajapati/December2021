@@ -76,14 +76,14 @@ namespace December2021.SpecFlow
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Create time and material record with valid details]")]
+        [NUnit.Framework.DescriptionAttribute("1 [Create time and material record with valid details]")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        public virtual void CreateTimeAndMaterialRecordWithValidDetails()
+        public virtual void _1CreateTimeAndMaterialRecordWithValidDetails()
         {
             string[] tagsOfScenario = new string[] {
                     "tag1"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Create time and material record with valid details]", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 [Create time and material record with valid details]", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -121,16 +121,16 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Edit time and material record with valid details]")]
+        [NUnit.Framework.DescriptionAttribute("2 [Edit time and material record with valid details]")]
         [NUnit.Framework.TestCaseAttribute("Time", "Code", null)]
         [NUnit.Framework.TestCaseAttribute("Material", "Edited Code", null)]
-        public virtual void EditTimeAndMaterialRecordWithValidDetails(string description, string code, string[] exampleTags)
+        public virtual void _2EditTimeAndMaterialRecordWithValidDetails(string description, string code, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Description", description);
             argumentsOfScenario.Add("Code", code);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Edit time and material record with valid details]", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 [Edit time and material record with valid details]", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -168,12 +168,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[Delete time and material record]")]
-        public virtual void DeleteTimeAndMaterialRecord()
+        [NUnit.Framework.DescriptionAttribute("3 [Delete time and material record]")]
+        public virtual void _3DeleteTimeAndMaterialRecord()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Delete time and material record]", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 [Delete time and material record]", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

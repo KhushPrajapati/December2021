@@ -77,7 +77,7 @@ namespace December2021.Pages
             IWebElement actualUsername = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
             return actualUsername.Text;
         }
-        public void EditEmployee_Test(IWebDriver driver, string UserName)
+        public void EditEmployee_Test(IWebDriver driver, string Name ,string UserName)
         {
             Thread.Sleep(3000);
 
@@ -85,10 +85,14 @@ namespace December2021.Pages
             IWebElement goToLastPageButton = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[4]/a[4]"));
             goToLastPageButton.Click();
 
+            // Click on Edit button
+            IWebElement editButton = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[6]/td[3]/a[1]"));
+            editButton.Click();
+
             // Edit current Name
             IWebElement editName = driver.FindElement(By.Id("Name"));
             editName.Clear();
-            editName.SendKeys("EditedEmployee2021");
+            editName.SendKeys(Name);
 
             // Edit current Username
             IWebElement editUserName = driver.FindElement(By.Id("Username"));
@@ -136,8 +140,6 @@ namespace December2021.Pages
             // Go to Last Edited Record
             IWebElement findLastEditedRecord = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
             
-            if (findLastEditedRecord.Text == "EditedEmployee2021")
-            {
                 // Click on Delete button
                 IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[3]/a[2]"));
                 deleteButton.Click();
@@ -145,21 +147,11 @@ namespace December2021.Pages
 
                 // Click on OK
                 driver.SwitchTo().Alert().Accept();
-            }
-            else
-            {
-                Assert.Fail("Record to be deleted hasn't been found. Record not Deleted.");
-            }
-
+            
             // Assert that Employee record has been deleted
             IWebElement goToLastPageBtn = driver.FindElement(By.XPath("//*[@id='usersGrid']/div[4]/a[4]"));
             goToLastPageBtn.Click();
             Thread.Sleep(2000);
-
-            // Assertion
-            //Assert.That(editedName.Text != "EditedEmployee2021", "Edited Name record hasn't been deleted.");
-            //Assert.That(editedUserName.Text != "EditEmp2021", "Edited UserName record hasn't been deleted.");
-
         }
         public string GetDeletedName(IWebDriver driver)
         {

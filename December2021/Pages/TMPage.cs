@@ -171,8 +171,8 @@ namespace December2021.Pages
 
             IWebElement findEditedRecord = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
 
-            if (findEditedRecord.Text == "TEditedDecember2012")
-            {
+            //if (findEditedRecord.Text == "TEditedDecember2012")
+            //{
                 // Click on the Delete Button
                 IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
                 deleteButton.Click();
@@ -180,11 +180,11 @@ namespace December2021.Pages
 
                 // Click on Ok
                 driver.SwitchTo().Alert().Accept();
-            }
-            else
-            {
-                Assert.Fail("Record to be deleted hasn't been found. Record not deleted.");
-            }
+            //}
+            //else
+            //{
+            //    Assert.Fail("Record to be deleted hasn't been found. Record not deleted.");
+            //}
 
             // Assert that Time record has been deleted.
             IWebElement goToLastPageBtn1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));

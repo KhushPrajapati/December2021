@@ -11,7 +11,7 @@ namespace December2021.Pages
 {
     public class LoginPage
     {
-        public void LoginSteps(IWebDriver driver)
+           public void LoginSteps(IWebDriver driver)
            {
             // Open chrome browser
             driver.Manage().Window.Maximize();
